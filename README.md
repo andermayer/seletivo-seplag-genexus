@@ -1,8 +1,9 @@
-# PROCESSO SELETIVO SIMPLIFICADO Nº 002/2025/SEPLAG
+# PROCESSO SELETIVO SIMPLIFICADO #
+# Nº 002/2025/SEPLAG #
 
-Numero da Inscricao: 8693
-Anderson Mayer da Penha
-ANALISTA DE TI - Desenvolvedor GENEXUS
+- Numero da Inscricao: 8693
+- Anderson Mayer da Penha
+- ANALISTA DE TI - Desenvolvedor GENEXUS
 
 ## PROJETO PRÁTICO IMPLEMENTAÇÃO BACK-END GENEXUS
 
@@ -82,7 +83,7 @@ Os endpoints seguem a estrutura RESTful:
 ├── init-db                                  # Inicializa o locale padrão do cluster de banco de dados  
 │   └── init.sql                             # Script SQL para criação do banco de dados 
 ├── docker-compose.yml                       # Configuração dos containers (PostgreSQL, MinIO, API)
-├── Knowledge Base                           # Arquivo da KB
+├── kb                                       # Arquivo da KB
 │   ├── projetogenexus.zip                   # Arquivo zip da pasta “Knowledge Base(KB)” com código fonte
 │   └── projetogenexus.war                   # WAR para deploy da aplicação
 └── README.md                                # Instruções de implantação
@@ -117,7 +118,8 @@ docker-compose up -d  # Inicia os containers em background
 
 - Após a geração do token copiar e colar "Auth Type: Bearer Token" para autorização de acesso da api que será utilizada conforme imagem abaixo. 
 
-![link](Arquivos\Authorization.png)
+[Authorization.png](seletivo-seplag-genexus\arquivos\authorization.png)
+
 
 ---
 
@@ -177,7 +179,7 @@ docker-compose up -d  # Inicia os containers em background
    ```[apifotopessoa.yaml GET]``` {{baseUrl}}/?Pesid=1
 
    Será gerado o link para download da imagem armazenada no MinIO.
-
+   - Exemplo:
    {
       "fotografialink": "http://localhost:9000/seletivo-seplag/%2FContent/foto_pessoa/fp_foto/5d445320-131d-4107-be17-d2e859fe528a_3647c70b-9f45-4aed-8d8c-c3971dedaf75.tmp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250401T041614Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=5VZkoaXNHJgRpgtml65k%2F20250401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3575f17cda30f2b6e1c74d2d664a3276766a6d69718559135f17777b2615d219"
    }   
@@ -188,7 +190,7 @@ docker-compose up -d  # Inicia os containers em background
 
 ### **Entregáveis**  
 1. Código-fonte da API.  
-2. Arquivos de configuração Docker (`Dockerfile`, `docker-compose.yml`).  
+2. Arquivos de configuração Docker (`docker-compose.yml`).  
 3. Documentação técnica (endpoints, exemplos de requisições/respostas).  
 4. Script SQL para criação do banco de dados.  
 
@@ -202,12 +204,6 @@ docker-compose up -d  # Inicia os containers em background
 
 ---  
 *Entrega concluída conforme especificado no escopo do projeto.*
-
-
-
-
-
-
 
 
 
