@@ -118,7 +118,7 @@ docker-compose up -d  # Inicia os containers em background
 
 - Após a geração do token copiar e colar "Auth Type: Bearer Token" para autorização de acesso da api que será utilizada conforme imagem abaixo. 
 
-[Authorization.png](seletivo-seplag-genexus\arquivos\authorization.png)
+[Authorization.png](arquivos/Authorization.png)
 
 
 ---
