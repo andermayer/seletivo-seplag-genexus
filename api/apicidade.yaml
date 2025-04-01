@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: "apicidade"
+  description: "apicidade"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apicidade
+paths:
+  /:
+    post:
+      tags:
+        - apicidade  
+      operationId: "apicidade.MetodoInserirCidade"
+      summary: "Metodo para cadastar registro da cidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirCidadeInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apicidade  
+      operationId: "apicidade.MetodoConsultarCidade"
+      summary: "Método para consultar unidade com registros paginados."
+      parameters:
+        - name: "cidnome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Qtdregistro"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarCidadeOutput"
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - apicidade  
+      operationId: "apicidade.MetodoAlterarCidade"
+      summary: "Método para alterar registro da cidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoAlterarCidadeInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{cid_id}:
+    delete:
+      tags:
+        - apicidade  
+      operationId: "apicidade.MetodoExcluirCidade"
+      summary: "Método para excluir registro da cidade"
+      parameters:
+        - name: "cid_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    MetodoConsultarCidadeOutput:
+      properties:
+        crud_cidade_get_sdt:
+          description: "crud_cidade_put_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_cidade_put_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+
+
+    MetodoInserirCidadeInput:  
+      properties:
+        crud_cidade_post_sdt:
+          description: "crud_cidade_post_sdt"
+          $ref: "#/components/schemas/crud_cidade_post_sdt"
+
+
+    MetodoAlterarCidadeInput:  
+      properties:
+        crud_cidade_put_sdt:
+          description: "crud_cidade_put_sdt"
+          $ref: "#/components/schemas/crud_cidade_put_sdt"
+
+  
+    crud_cidade_post_sdt:
+      properties:
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    crud_cidade_put_sdt:
+      properties:
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+ 

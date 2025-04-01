@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: "apipessoa"
+  description: "apipessoa"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apipessoa
+paths:
+  /:
+    post:
+      tags:
+        - apipessoa  
+      operationId: "apipessoa.MetodoInserirPessoa"
+      summary: "Metodo para cadastar pessoa"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirPessoaInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apipessoa  
+      operationId: "apipessoa.MetodoConsultarPessoa"
+      summary: "Método para consultar pessoa"
+      parameters:
+        - name: "pesnome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Quantidadepagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarPessoaOutput"
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - apipessoa  
+      operationId: "apipessoa.MetodoAlterarPessoa"
+      summary: "Método para alterar pessoa"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoAlterarPessoaInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{pes_id}:
+    delete:
+      tags:
+        - apipessoa  
+      operationId: "apipessoa.MetodoExcluirPessoa"
+      summary: "Método para excluir pessoa"
+      parameters:
+        - name: "pes_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    MetodoConsultarPessoaOutput:
+      properties:
+        crud_pessoa_get_sdt:
+          description: "pessoa_put_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/pessoa_put_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+
+
+    MetodoInserirPessoaInput:  
+      properties:
+        pessoa_post_sdt:
+          description: "pessoa_post_sdt"
+          $ref: "#/components/schemas/pessoa_post_sdt"
+
+
+    MetodoAlterarPessoaInput:  
+      properties:
+        pessoa_put_sdt:
+          description: "pessoa_put_sdt"
+          $ref: "#/components/schemas/pessoa_put_sdt"
+
+  
+    pessoa_post_sdt:
+      properties:
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    pessoa_put_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+
+
+
+ 

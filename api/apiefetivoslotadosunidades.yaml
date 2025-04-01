@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: "apiefetivoslotadosunidades"
+  description: "apiefetivoslotadosunidades"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apiefetivoslotadosunidades
+paths:
+  /:
+    get:
+      tags:
+        - apiefetivoslotadosunidades  
+      operationId: "apiefetivoslotadosunidades.MetodoConsultarServidorEfetivoUnidade"
+      summary: "Método para consultar servidor efetivo da unidade."
+      parameters:
+        - name: "unidid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Qtdregistro"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarServidorEfetivoUnidadeOutput"
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+    MetodoConsultarServidorEfetivoUnidadeOutput:
+      properties:
+        crud_efetivo_unidade_get_sdt:
+          description: "crud_efetivo_unidade_get_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_efetivo_unidade_get_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+  
+    crud_efetivo_unidade_get_sdt:
+      properties:
+        se_pes_id:
+          description: "id pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "matricula"
+          type: "string"
+        pes_nome:
+          description: "nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "data_nascimento"
+          type: "string"
+          format: "date"
+        idade:
+          description: "idade"
+          type: "integer"
+          format: "int32"
+        unid_nome:
+          description: "unidade de lotacao"
+          type: "string"
+        fotografia:
+          description: "fotografia"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+ 

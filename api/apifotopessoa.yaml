@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: "apifotopessoa"
+  description: "apifotopessoa"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apifotopessoa
+paths:
+  /gxobject:
+    post:
+      tags:
+        - apifotopessoa
+      operationId: "Uploadapifotopessoa"
+      summary: "Upload a binary for apifotopessoa"
+      responses:
+        200:
+          description: "Successful operation"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal Server Error"
+
+  /:
+    post:
+      tags:
+        - apifotopessoa  
+      operationId: "apifotopessoa.MetodoInserirFoto"
+      summary: "Metodo para fazer uploaad da foto"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirFotoInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apifotopessoa  
+      operationId: "apifotopessoa.MetodoConsultartFoto"
+      summary: "Método para consultar foto da pessoa"
+      parameters:
+        - name: "Pesid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "string"
+
+
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+    MetodoInserirFotoInput:  
+      properties:
+        crud_foto_pessoa_post_sdt:
+          description: "crud_foto_pessoa_post_sdt"
+          $ref: "#/components/schemas/crud_foto_pessoa_post_sdt"
+
+  
+    crud_foto_pessoa_post_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        fp_foto:
+          description: "fp_foto"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+ 

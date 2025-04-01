@@ -1,0 +1,260 @@
+openapi: 3.0.0
+info:
+  title: "apiunidade"
+  description: "apiunidade"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apiunidade
+paths:
+  /:
+    post:
+      tags:
+        - apiunidade  
+      operationId: "apiunidade.MetodoInserirUnidade"
+      summary: "Metodo para cadastar registro da unidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirUnidadeInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apiunidade  
+      operationId: "apiunidade.MetodoConsultarUnidade"
+      summary: "Método para consultar unidade com registros paginados."
+      parameters:
+        - name: "unidnome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Qtdregistro"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarUnidadeOutput"
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - apiunidade  
+      operationId: "apiunidade.MetodoAlterarUnidade"
+      summary: "Método para alterar registro da unidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoAlterarUnidadeInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{unid_id}:
+    delete:
+      tags:
+        - apiunidade  
+      operationId: "apiunidade.MetodoExcluirUnidade"
+      summary: "Método para excluir registro da unidade"
+      parameters:
+        - name: "unid_id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    MetodoConsultarUnidadeOutput:
+      properties:
+        crud_unidade_get_sdt:
+          description: "crud_unidade_get_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_unidade_get_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+
+
+    MetodoInserirUnidadeInput:  
+      properties:
+        crud_unidade_post_sdt:
+          description: "crud_unidade_post_sdt"
+          $ref: "#/components/schemas/crud_unidade_post_sdt"
+
+
+    MetodoAlterarUnidadeInput:  
+      properties:
+        crud_unidade_put_sdt:
+          description: "crud_unidade_put_sdt"
+          $ref: "#/components/schemas/crud_unidade_put_sdt"
+
+  
+    crud_unidade_post_sdt:
+      properties:
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        unid_sigla:
+          description: "unid_sigla"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    crud_unidade_get_sdt:
+      properties:
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        unid_sigla:
+          description: "unid_sigla"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    crud_unidade_put_sdt:
+      properties:
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        unid_sigla:
+          description: "unid_sigla"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+
+
+
+ 

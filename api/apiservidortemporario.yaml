@@ -1,0 +1,303 @@
+openapi: 3.0.0
+info:
+  title: "apiservidortemporario"
+  description: "apiservidortemporario"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apiservidortemporario
+paths:
+  /:
+    post:
+      tags:
+        - apiservidortemporario  
+      operationId: "apiservidortemporario.MetodoInserirServidorTemporario"
+      summary: "Metodo para cadastar servidor temporário"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirServidorTemporarioInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apiservidortemporario  
+      operationId: "apiservidortemporario.MetodoConsultarServidorTemporario"
+      summary: "Método para consultar servidor temporário."
+      parameters:
+        - name: "Pesnome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Quantidadepagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarServidorTemporarioOutput"
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - apiservidortemporario  
+      operationId: "apiservidortemporario.MetodoAlterarServidorTemporario"
+      summary: "Método para alterar servidor temporário"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoAlterarServidorTemporarioInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{pesid}:
+    delete:
+      tags:
+        - apiservidortemporario  
+      operationId: "apiservidortemporario.MetodoExcluirServidorTemporario"
+      summary: "Método para excluir servidor temporário"
+      parameters:
+        - name: "pesid"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    MetodoConsultarServidorTemporarioOutput:
+      properties:
+        crud_servidor_temporario_get_sdt:
+          description: "crud_servidor_temporario_get_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_servidor_temporario_get_sdt_Item"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+
+
+    MetodoInserirServidorTemporarioInput:  
+      properties:
+        crud_servidor_temporario_post_sdt:
+          description: "crud_servidor_temporario_post_sdt"
+          $ref: "#/components/schemas/crud_servidor_temporario_post_sdt"
+
+
+    MetodoAlterarServidorTemporarioInput:  
+      properties:
+        crud_servidor_temporario_put_sdt:
+          description: "crud_servidor_temporario_put_sdt"
+          $ref: "#/components/schemas/crud_servidor_temporario_put_sdt"
+
+  
+    crud_servidor_temporario_post_sdt:
+      properties:
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    crud_servidor_temporario_get_sdt_Item:
+      properties:
+        st_pes_id:
+          description: "st_pes_id"
+          type: "integer"
+          format: "int64"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    crud_servidor_temporario_put_sdt:
+      properties:
+        st_pes_id:
+          description: "st_pes_id"
+          type: "integer"
+          format: "int64"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+
+
+
+ 

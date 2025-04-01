@@ -1,0 +1,249 @@
+openapi: 3.0.0
+info:
+  title: "apiendereco"
+  description: "apiendereco"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apiendereco
+paths:
+  /:
+    post:
+      tags:
+        - apiendereco  
+      operationId: "apiendereco.MetodoInserirEndereco"
+      summary: "Metodo para cadastar registro da endereco"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirEnderecoInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apiendereco  
+      operationId: "apiendereco.MetodoConsultarEndereco"
+      summary: "Método para consultar endereco com registros paginados."
+      parameters:
+        - name: "endid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Qtdregistro"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarEnderecoOutput"
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - apiendereco  
+      operationId: "apiendereco.MetodoAlterarEndereco"
+      summary: "Método para alterar registro da endereco"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoAlterarEnderecoInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{endid}:
+    delete:
+      tags:
+        - apiendereco  
+      operationId: "apiendereco.MetodoExcluirEndereco"
+      summary: "Método para excluir registro da endereco"
+      parameters:
+        - name: "endid"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    MetodoConsultarEnderecoOutput:
+      properties:
+        crud_endereco_get_sdt:
+          description: "crud_endereco_get_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_endereco_get_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+
+
+    MetodoInserirEnderecoInput:  
+      properties:
+        crud_endereco_post_sdt:
+          description: "crud_endereco_post_sdt"
+          $ref: "#/components/schemas/crud_endereco_post_sdt"
+
+
+    MetodoAlterarEnderecoInput:  
+      properties:
+        crud_endereco_put_sdt:
+          description: "crud_endereco_put_sdt"
+          $ref: "#/components/schemas/crud_endereco_put_sdt"
+
+  
+    crud_endereco_post_sdt:
+      properties:
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    crud_endereco_get_sdt:
+      properties:
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+
+
+
+    crud_endereco_put_sdt:
+      properties:
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+
+
+
+ 

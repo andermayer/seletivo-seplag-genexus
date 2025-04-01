@@ -1,0 +1,247 @@
+openapi: 3.0.0
+info:
+  title: "apilotacao"
+  description: "apilotacao"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apilotacao
+paths:
+  /:
+    post:
+      tags:
+        - apilotacao  
+      operationId: "apilotacao.MetodoInserirLotacao"
+      summary: "Metodo para cadastar registro da unidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoInserirLotacaoInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+
+    get:
+      tags:
+        - apilotacao  
+      operationId: "apilotacao.MetodoConsultarLotacao"
+      summary: "Método para consultar unidade com registros paginados."
+      parameters:
+        - name: "lotid"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Qtdregistro"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarLotacaoOutput"
+        404:
+          description: "Not found"
+
+
+    put:
+      tags:
+        - apilotacao  
+      operationId: "apilotacao.MetodoAlterarLotacao"
+      summary: "Método para alterar registro da unidade"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MetodoAlterarLotacaoInput"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+
+  /{lotid}:
+    delete:
+      tags:
+        - apilotacao  
+      operationId: "apilotacao.MetodoExcluirLotacao"
+      summary: "Método para excluir registro da unidade"
+      parameters:
+        - name: "lotid"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GeneXus.Common.Messages_Message"  
+
+        404:
+          description: "Not found"
+components:
+  schemas:
+    MetodoConsultarLotacaoOutput:
+      properties:
+        crud_lotacao_get_sdt:
+          description: "crud_lotacao_get_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_lotacao_get_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+
+
+    MetodoInserirLotacaoInput:  
+      properties:
+        crud_lotacao_post_sdt:
+          description: "crud_lotacao_post_sdt"
+          $ref: "#/components/schemas/crud_lotacao_post_sdt"
+
+
+    MetodoAlterarLotacaoInput:  
+      properties:
+        crud_lotacao_put_sdt:
+          description: "crud_lotacao_put_sdt"
+          $ref: "#/components/schemas/crud_lotacao_put_sdt"
+
+  
+    crud_lotacao_post_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "lot_data_lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "lot_data_remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "lot_portaria"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+    crud_lotacao_get_sdt:
+      properties:
+        lot_id:
+          description: "lot_id"
+          type: "integer"
+          format: "int64"
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        lot_data_lotacao:
+          description: "lot_data_lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "lot_data_remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "lot_portaria"
+          type: "string"
+
+
+
+    crud_lotacao_put_sdt:
+      properties:
+        lot_id:
+          description: "lot_id"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "lot_data_lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "lot_data_remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "lot_portaria"
+          type: "string"
+
+
+
+ 

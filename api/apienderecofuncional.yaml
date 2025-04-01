@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: "apienderecofuncional"
+  description: "apienderecofuncional"
+  version: "20250401040410"
+servers:
+  - url: http://localhost:8080/projetojava/apienderecofuncional
+paths:
+  /:
+    get:
+      tags:
+        - apienderecofuncional  
+      operationId: "apienderecofuncional.MetodoConsultarEnderecoFuncional"
+      summary: "Método para consultar endereco funcional servidor efetivo."
+      parameters:
+        - name: "pesnome"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+            
+        - name: "Pagina"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+        - name: "Qtdregistro"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+            format: "int32"
+      
+      responses:
+        200:
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetodoConsultarEnderecoFuncionalOutput"
+        404:
+          description: "Not found"
+
+components:
+  schemas:
+    MetodoConsultarEnderecoFuncionalOutput:
+      properties:
+        crud_endereco_funcional_get_sdt:
+          description: "crud_endereco_funcional_get_sdt"
+          type: array
+          items:
+            $ref: "#/components/schemas/crud_endereco_funcional_get_sdt"
+        Messages:
+          description: "Messages"
+          type: array
+          items:
+            $ref: "#/components/schemas/GeneXus.Common.Messages_Message"
+
+  
+    crud_endereco_funcional_get_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+
+
+
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+
+
+
+ 
