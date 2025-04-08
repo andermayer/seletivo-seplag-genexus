@@ -95,7 +95,7 @@ Os endpoints seguem a estrutura RESTful:
 
 ### **Pré-requisitos para Implantação**  
 1. Docker Desktop e Docker Compose instalados.  
-2. Baixar o repositorio seletivo-seplag-genexus.
+2. Baixar o repositorio seletivo-seplag-genexus no github.
 
 ### **Como Executar**  
 
@@ -111,11 +111,11 @@ Os endpoints seguem a estrutura RESTful:
 
 1. Autorizacao/Autenticação**  
 
-```[apivalidacao.yaml POST]``` {{baseUrl}}/apivalidacao
-   .{
-   .  "Login": "admin",
-   .  "Password": "admin"
-   .}
+```[apivalidacao.yaml POST]``` {{baseUrl}}/apivalidacao <br>
+   {<br>
+      "Login": "admin",<br>
+      "Password": "admin"<br>
+   }<br>
 
 - Após a geração do token copiar e colar "Auth Type: Bearer Token" para autorização de acesso da api que será utilizada conforme imagem abaixo. 
    [authorization.png](arquivos/authorization.png)
