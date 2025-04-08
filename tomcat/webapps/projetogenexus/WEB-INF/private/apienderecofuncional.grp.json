@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apienderecofuncional",
+"BasePath":"apienderecofuncional",
+"Mappings":
+[
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultarenderecofuncional",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"pesnome","Value":"Pes_nome"}],
+"ServiceMethod":"gxep_metodoconsultarenderecofuncional",
+"Implementation":"crud_endereco_funcional_get"
+}]}

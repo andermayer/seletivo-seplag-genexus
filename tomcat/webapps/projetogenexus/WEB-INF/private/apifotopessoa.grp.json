@@ -1,0 +1,36 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apifotopessoa",
+"BasePath":"apifotopessoa",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoinserirfoto",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoinserirfoto",
+"Implementation":"crud_foto_pessoa_post"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultartfoto",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoconsultartfoto",
+"Implementation":"crud_foto_pessoa_get"
+},
+{
+"Name":"gxobject",
+"Verb":"POST",
+"Bodystyle":"Wrapped",
+"ServiceMethod":"gxobject",
+"VariableAlias": [],
+"Implementation":"gxobject",
+"PathRegexp":"gxobject",
+"Path":"gxobject"
+}]}

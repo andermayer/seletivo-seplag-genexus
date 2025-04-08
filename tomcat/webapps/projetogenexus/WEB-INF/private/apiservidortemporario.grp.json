@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apiservidortemporario",
+"BasePath":"apiservidortemporario",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoinserirservidortemporario",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoinserirservidortemporario",
+"Implementation":"crud_servidor_temporario_post"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoalterarservidortemporario",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoalterarservidortemporario",
+"Implementation":"crud_servidor_temporario_put"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{st_pes_id}",
+"Name":"metodoexcluirservidortemporario",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"pesid","Value":"St_pes_id"}],
+"ServiceMethod":"gxep_metodoexcluirservidortemporario",
+"Implementation":"crud_servidor_temporario_delete"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultarservidortemporario",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoconsultarservidortemporario",
+"Implementation":"crud_servidor_temporario_get"
+}]}

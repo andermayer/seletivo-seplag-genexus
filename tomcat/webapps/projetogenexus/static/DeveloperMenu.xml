@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="prgs.xsl"?>
+<Objects>
+   <Charset>UTF-8</Charset>
+   <Path>file:///C:/Program Files (x86)/GeneXus/GeneXus18/</Path>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>unidade_endereco</ObjName>
+      <ObjDesc>unidade_endereco</ObjDesc>
+      <ObjLink>/projetogenexus/com.unidade_endereco</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>unidade</ObjName>
+      <ObjDesc>unidade</ObjDesc>
+      <ObjLink>/projetogenexus/com.unidade</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>servidor_temporario</ObjName>
+      <ObjDesc>servidor_temporario</ObjDesc>
+      <ObjLink>/projetogenexus/com.servidor_temporario</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>servidor_efetivo</ObjName>
+      <ObjDesc>servidor_efetivo</ObjDesc>
+      <ObjLink>/projetogenexus/com.servidor_efetivo</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>pessoa_endereco</ObjName>
+      <ObjDesc>pessoa_endereco</ObjDesc>
+      <ObjLink>/projetogenexus/com.pessoa_endereco</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>pessoa</ObjName>
+      <ObjDesc>cadastro pessoa</ObjDesc>
+      <ObjLink>/projetogenexus/com.pessoa</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>lotacao</ObjName>
+      <ObjDesc>lotacao</ObjDesc>
+      <ObjLink>/projetogenexus/com.lotacao</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>foto_pessoa</ObjName>
+      <ObjDesc>foto_pessoa</ObjDesc>
+      <ObjLink>/projetogenexus/com.foto_pessoa</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>endereco</ObjName>
+      <ObjDesc>endereco</ObjDesc>
+      <ObjLink>/projetogenexus/com.endereco</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>cidade</ObjName>
+      <ObjDesc>cidade</ObjDesc>
+      <ObjLink>/projetogenexus/com.cidade</ObjLink>
+   </Object>
+   <Object>
+      <ObjCls>13</ObjCls>
+      <ObjName>home</ObjName>
+      <ObjDesc>home</ObjDesc>
+      <ObjLink>/projetogenexus/com.home</ObjLink>
+   </Object>
+</Objects>

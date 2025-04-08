@@ -1,0 +1,621 @@
+openapi: 3.0.0
+info:
+  title: "projeto"
+  version: "20250408010303"
+servers:
+  - url: http://localhost:8080/projetogenexus/rest
+paths:
+components:
+  schemas:
+    crud_cidade_post_sdt:
+      properties:
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_cidade_put_sdt:
+      properties:
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_efetivo_unidade_get_sdt:
+      properties:
+        se_pes_id:
+          description: "id pessoa"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "matricula"
+          type: "string"
+        pes_nome:
+          description: "nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "data_nascimento"
+          type: "string"
+          format: "date"
+        idade:
+          description: "idade"
+          type: "integer"
+          format: "int32"
+        unid_nome:
+          description: "unidade de lotacao"
+          type: "string"
+        fotografia:
+          description: "fotografia"
+          type: "string"
+    crud_endereco_funcional_get_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+    crud_endereco_get_sdt:
+      properties:
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_endereco_post_sdt:
+      properties:
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+    crud_endereco_put_sdt:
+      properties:
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+    crud_foto_pessoa_post_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        fp_foto:
+          description: "fp_foto"
+          type: "string"
+    crud_lotacao_get_sdt:
+      properties:
+        lot_id:
+          description: "lot_id"
+          type: "integer"
+          format: "int64"
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        lot_data_lotacao:
+          description: "lot_data_lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "lot_data_remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "lot_portaria"
+          type: "string"
+    crud_lotacao_post_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "lot_data_lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "lot_data_remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "lot_portaria"
+          type: "string"
+    crud_lotacao_put_sdt:
+      properties:
+        lot_id:
+          description: "lot_id"
+          type: "integer"
+          format: "int64"
+        lot_data_lotacao:
+          description: "lot_data_lotacao"
+          type: "string"
+          format: "date"
+        lot_data_remocao:
+          description: "lot_data_remocao"
+          type: "string"
+          format: "date"
+        lot_portaria:
+          description: "lot_portaria"
+          type: "string"
+    crud_servidor_efetivo_get_sdt:
+      properties:
+        se_pes_id:
+          description: "se_pes_id"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "se_matricula"
+          type: "string"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_servidor_efetivo_post_sdt:
+      properties:
+        se_matricula:
+          description: "se_matricula"
+          type: "string"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_servidor_efetivo_put_sdt:
+      properties:
+        se_pes_id:
+          description: "se_pes_id"
+          type: "integer"
+          format: "int64"
+        se_matricula:
+          description: "se_matricula"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+    crud_servidor_temporario_get_sdt_Item:
+      properties:
+        st_pes_id:
+          description: "st_pes_id"
+          type: "integer"
+          format: "int64"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_servidor_temporario_post_sdt:
+      properties:
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_servidor_temporario_put_sdt:
+      properties:
+        st_pes_id:
+          description: "st_pes_id"
+          type: "integer"
+          format: "int64"
+        st_data_admissao:
+          description: "st_data_admissao"
+          type: "string"
+          format: "date"
+        st_data_demissao:
+          description: "st_data_demissao"
+          type: "string"
+          format: "date"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+    crud_unidade_get_sdt:
+      properties:
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        unid_sigla:
+          description: "unid_sigla"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_id:
+          description: "cid_id"
+          type: "integer"
+          format: "int64"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_unidade_post_sdt:
+      properties:
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        unid_sigla:
+          description: "unid_sigla"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    crud_unidade_put_sdt:
+      properties:
+        unid_id:
+          description: "unid_id"
+          type: "integer"
+          format: "int64"
+        unid_nome:
+          description: "unid_nome"
+          type: "string"
+        unid_sigla:
+          description: "unid_sigla"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"
+    GeneXus.Common.Messages_Message:
+      properties:
+        Id:
+          description: "Id"
+          type: "string"
+        Type:
+          description: "Type"
+          type: "integer"
+          format: "int32"
+        Description:
+          description: "Description"
+          type: "string"
+    pessoa_post_sdt:
+      properties:
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_tipo_endereco:
+          description: "end_tipo_endereco"
+          type: "string"
+        end_logradouro:
+          description: "end_logradouro"
+          type: "string"
+        end_numero:
+          description: "end_numero"
+          type: "integer"
+          format: "int64"
+        end_bairro:
+          description: "end_bairro"
+          type: "string"
+        cid_nome:
+          description: "cid_nome"
+          type: "string"
+        cid_uf:
+          description: "cid_uf"
+          type: "string"
+    pessoa_put_sdt:
+      properties:
+        pes_id:
+          description: "pes_id"
+          type: "integer"
+          format: "int64"
+        pes_nome:
+          description: "pes_nome"
+          type: "string"
+        pes_data_nascimento:
+          description: "pes_data_nascimento"
+          type: "string"
+          format: "date"
+        pes_sexo:
+          description: "pes_sexo"
+          type: "string"
+        pes_mae:
+          description: "pes_mae"
+          type: "string"
+        pes_pai:
+          description: "pes_pai"
+          type: "string"
+        end_id:
+          description: "end_id"
+          type: "integer"
+          format: "int64"

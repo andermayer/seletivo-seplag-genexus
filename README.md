@@ -24,7 +24,7 @@ Este projeto consiste na implementação de uma **API REST** para gerenciamento 
 - **Min.IO** para armazenamento de imagens (em container)
 - **Docker Compose** para orquestração dos containers
 - **JWT** para autenticação e segurança
-- **Postman** para analisar e testar APIs
+- **Swagger UI** para analisar e testar APIs
 
 ## Arquitetura da API
 A API está estruturada em pastas separadas para cada CRUD:
@@ -79,31 +79,32 @@ Os endpoints seguem a estrutura RESTful:
 │   └── api/apiefetivoslotadosunidades.yaml  # API EndPoint Endereço Funcional Servidor Efetivo
 │   └── api/apienderecofuncional.yaml        # API EndPoint Servidores Efetivos Lotados na Unidade
 ├── arquivos                                 # Arquivos   
-│   └── Authorization.png                    # Imagem exemplo de Autenticação
+│   ├── authorization.png                    # Imagem exemplo de Autenticação
+│   └── repositorio.png                      # Imagem execução do comando
 ├── init-db                                  # Inicializa o locale padrão do cluster de banco de dados  
 │   └── init.sql                             # Script SQL para criação do banco de dados 
-├── docker-compose.yml                       # Configuração dos containers (PostgreSQL, MinIO, API)
 ├── kb                                       # Arquivo da KB
 │   ├── projetogenexus.zip                   # Arquivo zip da pasta “Knowledge Base(KB)” com código fonte
 │   └── projetogenexus.war                   # WAR para deploy da aplicação
+├── tomcat                                   # Pasta do tomcat
+│   ├── conf                                 # Arquivo context.xml
+│   └── webapps                              # WAR descompactado da aplicação
+├── docker-compose.yml                       # Configuração dos containers (PostgreSQL, MinIO, API)
 └── README.md                                # Instruções de implantação
 ```
 
-
 ### **Pré-requisitos para Implantação**  
-1. Docker e Docker Compose instalados.  
-2. Tomcat 11.0.5 para servidor web.  
-3. Postman para testar APIs.
+1. Docker Desktop e Docker Compose instalados.  
+2. Baixar o repositorio seletivo-seplag-genexus.
 
 ### **Como Executar**  
-```bash
-docker-compose up -d  # Inicia os containers em background
-```
+
+- Executar o comando dentro da pasta do repositorio.
+   [repositorio.png](arquivos/repositorio.png)
 - A API estará disponível em `http://localhost:8080`.  
 - O MinIO pode ser acessado via console web na porta `9000`.  
-- Deploy do war no tomcat ou similar seletivojava.war
-- Execute a aplicação
-- URL API  http://localhost:8080/projetojava/ sera identificado no documento com {{baseUrl}}
+- Deploy do war no tomcat.
+- URL API  http://localhost:8080/projetogenexus/swagger-ui/  sera identificado no documento com {{baseUrl}}
 
 
 ### **Testando a API**
@@ -111,42 +112,45 @@ docker-compose up -d  # Inicia os containers em background
 1. Autorizacao/Autenticação**  
 
 ```[apivalidacao.yaml POST]``` {{baseUrl}}/apivalidacao
-    {
-    "Login": "admin",
-    "Password": "admin"
-    }
+   .{
+   .  "Login": "admin",
+   .  "Password": "admin"
+   .}
 
 - Após a geração do token copiar e colar "Auth Type: Bearer Token" para autorização de acesso da api que será utilizada conforme imagem abaixo. 
+   [authorization.png](arquivos/authorization.png)
 
-[Authorization.png](arquivos/Authorization.png)
+- Copiar o token gerado
+   [token.png](arquivos/token.png)
+
+- Colar token gerado conforme imagem abaixo
+   [autorizacao-com-token.png](arquivos/autorizacao-com-token.png)
 
 
----
-
-2. Teste prático CRUD Unidade {{baseUrl}}/apiunidade
-```[apiunidade.yaml POST]``` 
+2. Teste prático CRUD Unidade   {{baseUrl}}/apiunidade <br>  
+```[apiunidade.yaml POST]``` <br>
    {
-      "crud_unidade_post_sdt": {
-         "unid_nome": "Unidade Principal",
-         "unid_sigla": "UNIDPRI",
-         "end_tipo_endereco": "Avenida",
-         "end_logradouro": "Brasil",
-         "end_numero": 77,
-         "end_bairro": "Centro",
-         "cid_nome": "CUIABA",
-         "cid_uf": "MT"
-      }
-   }
+      "crud_unidade_post_sdt": { <br>
+         "unid_nome": "Unidade Principal",<br>
+         "unid_sigla": "UNIDPRI",<br>
+         "end_tipo_endereco": "Avenida",<br>
+         "end_logradouro": "Brasil",<br>
+         "end_numero": 77,<br>
+         "end_bairro": "Centro",<br>
+         "cid_nome": "CUIABA",<br>
+         "cid_uf": "MT"<br>
+      }<br>
+   }<br>
 
-```[apiunidade.yaml POST]```
-   {
-      "crud_unidade_put_sdt": {
-         "unid_id": 1,
-         "unid_nome": "Unidade Secundária",
-         "unid_sigla": "UNIDSEC",
-         "end_id": 2
-      }
-   }
+```[apiunidade.yaml POST]```<br>
+   {<br>
+      "crud_unidade_put_sdt": {<br>
+         "unid_id": 1,<br>
+         "unid_nome": "Unidade Secundária",<br>
+         "unid_sigla": "UNIDSEC",<br>
+         "end_id": 2<br>
+      }<br>
+   }<br>
 
 ```[apiunidade.yaml DEL]``` {{baseUrl}}/apiunidade/:unid_id
 
@@ -159,20 +163,20 @@ docker-compose up -d  # Inicia os containers em background
    
    ```[apifotopessoa.yaml POST]``` {{baseUrl}}/gxobject
 
-   POST Upload a binary for apifotopessoa
-   {
-      "object_id": "gxupload:f363b9e0958f4063925751d68b51f7b1"
-   }
+   POST Upload a binary for apifotopessoa<br>
+   {<br>
+      "object_id": "gxupload:f363b9e0958f4063925751d68b51f7b1"<br>
+   }<br>
 
    3.2. **Metodo POST para fazer upload da foto**
    Exemplo: gxupload:f363b9e0958f4063925751d68b51f7b1
-   {
-   "crud_foto_pessoa_post_sdt": 
-      {
-         "pes_id": 1,
-         "fp_foto": "gxupload:f363b9e0958f4063925751d68b51f7b1"
-      }
-   }
+   {<br>
+   "crud_foto_pessoa_post_sdt": <br>
+      {<br>
+         "pes_id": 1,<br>
+         "fp_foto": "gxupload:f363b9e0958f4063925751d68b51f7b1"<br>
+      }<br>
+   }<br>
 
    3.3. **Metodo GET para consultar foto da pessoa**
 
@@ -190,7 +194,7 @@ docker-compose up -d  # Inicia os containers em background
 
 ### **Entregáveis**  
 1. Código-fonte da API.  
-2. Arquivos de configuração Docker (`docker-compose.yml`).  
+2. Arquivos de configuração Docker (`docker-compose.yaml`).  
 3. Documentação técnica (endpoints, exemplos de requisições/respostas).  
 4. Script SQL para criação do banco de dados.  
 

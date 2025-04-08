@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apipessoa",
+"BasePath":"apipessoa",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoinserirpessoa",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoinserirpessoa",
+"Implementation":"crud_pessoa_post"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoalterarpessoa",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoalterarpessoa",
+"Implementation":"crud_pessoa_put"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{pes_id}",
+"Name":"metodoexcluirpessoa",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoexcluirpessoa",
+"Implementation":"crud_pessoa_delete"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultarpessoa",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"pesnome","Value":"Pes_nome"}],
+"ServiceMethod":"gxep_metodoconsultarpessoa",
+"Implementation":"crud_pessoa_get"
+}]}

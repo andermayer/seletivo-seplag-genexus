@@ -1,0 +1,16 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apivalidacao",
+"BasePath":"apivalidacao",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"login",
+"Path":"login",
+"Name":"loginusuario",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_loginusuario",
+"Implementation":"validausuariotoken"
+}]}

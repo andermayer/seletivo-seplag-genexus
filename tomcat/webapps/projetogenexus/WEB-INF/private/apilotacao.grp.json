@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apilotacao",
+"BasePath":"apilotacao",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoinserirlotacao",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoinserirlotacao",
+"Implementation":"crud_lotacao_post"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoalterarlotacao",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoalterarlotacao",
+"Implementation":"crud_lotacao_put"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{lot_id}",
+"Name":"metodoexcluirlotacao",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"lotid","Value":"Lot_id"}],
+"ServiceMethod":"gxep_metodoexcluirlotacao",
+"Implementation":"crud_lotacao_delete"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultarlotacao",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"lotid","Value":"Lot_id"}],
+"ServiceMethod":"gxep_metodoconsultarlotacao",
+"Implementation":"crud_lotacao_get"
+}]}

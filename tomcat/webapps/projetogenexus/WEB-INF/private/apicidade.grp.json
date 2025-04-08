@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apicidade",
+"BasePath":"apicidade",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoinserircidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoinserircidade",
+"Implementation":"crud_cidade_post"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoalterarcidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoalterarcidade",
+"Implementation":"crud_cidade_put"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{cid_id}",
+"Name":"metodoexcluircidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoexcluircidade",
+"Implementation":"crud_cidade_delete"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultarcidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"cidnome","Value":"Cid_nome"}],
+"ServiceMethod":"gxep_metodoconsultarcidade",
+"Implementation":"crud_cidade_get"
+}]}

@@ -1,0 +1,46 @@
+{
+"ObjectType":"ServiceGroup",
+"Name":"apiunidade",
+"BasePath":"apiunidade",
+"Mappings":
+[
+{
+"Verb":"POST",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoinserirunidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoinserirunidade",
+"Implementation":"crud_unidade_post"
+},
+{
+"Verb":"PUT",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoalterarunidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoalterarunidade",
+"Implementation":"crud_unidade_put"
+},
+{
+"Verb":"DELETE",
+"PathRegexp":"([^/]+)",
+"Path":"{unid_id}",
+"Name":"metodoexcluirunidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [],
+"ServiceMethod":"gxep_metodoexcluirunidade",
+"Implementation":"crud_unidade_delete"
+},
+{
+"Verb":"GET",
+"PathRegexp":"",
+"Path":"",
+"Name":"metodoconsultarunidade",
+"Bodystyle":"Wrapped",
+"VariableAlias": [{"Key":"unidnome","Value":"Unid_nome"}],
+"ServiceMethod":"gxep_metodoconsultarunidade",
+"Implementation":"crud_unidade_get"
+}]}
