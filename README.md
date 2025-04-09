@@ -104,18 +104,24 @@ Os endpoints seguem a estrutura RESTful:
 - A API estará disponível em `http://localhost:8080`.  
 - O MinIO pode ser acessado via console web na porta `9000`.  
 - Deploy do war no tomcat.
-- URL API  http://localhost:8080/projetogenexus/swagger-ui/  sera identificado no documento com {{baseUrl}}
-
+- URL API: 
+```url  
+http://localhost:8080/projetogenexus/swagger-ui/
+```
 
 ### **Testando a API**
 
 1. Autorizacao/Autenticação**  
 
-```[apivalidacao.yaml POST]``` {{baseUrl}}/apivalidacao <br>
-   {<br>
-      "Login": "admin",<br>
-      "Password": "admin"<br>
-   }<br>
+```[apivalidacao.yaml POST]```
+   [http://localhost:8080/projetogenexus/static/apivalidacao.yaml](http://localhost:8080/projetogenexus/swagger-ui/?urls.primaryName=Autentica%C3%A7%C3%A3o+-+Requisitos+Espec%C3%ADficos)
+
+```json
+   {
+    "Login": "admin",
+    "Password": "admin"
+   }
+```
 
 - Após a geração do token copiar e colar "Auth Type: Bearer Token" para autorização de acesso da api que será utilizada conforme imagem abaixo. 
    [authorization.png](arquivos/authorization.png)
@@ -127,70 +133,88 @@ Os endpoints seguem a estrutura RESTful:
    [autorizacao-com-token.png](arquivos/autorizacao-com-token.png)
 
 
-2. Teste prático CRUD Unidade   {{baseUrl}}/apiunidade <br>  
-```[apiunidade.yaml POST]``` <br>
+2. Teste prático CRUD Unidade  
+
+
+```[apiunidade.yaml POST]``` [http://localhost:8080/projetogenexus/apiunidade](http://localhost:8080/projetogenexus/swagger-ui/?urls.primaryName=CRUD+Unidade+-+Requisitos+Espec%C3%ADficos) 
+
+```json
    {
-      "crud_unidade_post_sdt": { <br>
-         "unid_nome": "Unidade Principal",<br>
-         "unid_sigla": "UNIDPRI",<br>
-         "end_tipo_endereco": "Avenida",<br>
-         "end_logradouro": "Brasil",<br>
-         "end_numero": 77,<br>
-         "end_bairro": "Centro",<br>
-         "cid_nome": "CUIABA",<br>
-         "cid_uf": "MT"<br>
-      }<br>
-   }<br>
+      "crud_unidade_post_sdt": { 
+         "unid_nome": "Unidade Principal",
+         "unid_sigla": "UNIDPRI",
+         "end_tipo_endereco": "Avenida",
+         "end_logradouro": "Brasil",
+         "end_numero": 77,
+         "end_bairro": "Centro",
+         "cid_nome": "CUIABA",
+         "cid_uf": "MT"
+      }
+   }
+```
 
-```[apiunidade.yaml POST]```<br>
-   {<br>
-      "crud_unidade_put_sdt": {<br>
-         "unid_id": 1,<br>
-         "unid_nome": "Unidade Secundária",<br>
-         "unid_sigla": "UNIDSEC",<br>
-         "end_id": 2<br>
-      }<br>
-   }<br>
+```[apiunidade.yaml PUT]```
+```json
+   {
+      "crud_unidade_put_sdt": {
+         "unid_id": 1,
+         "unid_nome": "Unidade Secundária",
+         "unid_sigla": "UNIDSEC",
+         "end_id": 2
+      }
+   }
+```
 
-```[apiunidade.yaml DEL]``` {{baseUrl}}/apiunidade/:unid_id
+```[apiunidade.yaml DEL]``` 
+http://localhost:8080/projetogenexus/apiunidade/:unid_id
 
-```[apiunidade.yaml GET]``` {{baseUrl}}/?unidnome=<string>&Pagina=<integer>&Qtdregistro=<integer>
+```[apiunidade.yaml GET]``` 
+http://localhost:8080/projetogenexus/apiunidade/?unidnome=nomeunidade&Pagina=1&Qtdregistro=10
 
 
 3. Teste prático Upload de Fotos
 
    3.1. **Metodo POST Upload a binary for apifotopessoa**
    
-   ```[apifotopessoa.yaml POST]``` {{baseUrl}}/gxobject
+   ```[apifotopessoa.yaml POST]``` 
+  [ http://localhost:8080/projetogenexus/gxobject](http://localhost:8080/projetogenexus/swagger-ui/?urls.primaryName=Upload+Foto+Pessoa+-+Requisitos+Espec%C3%ADficos)
 
-   POST Upload a binary for apifotopessoa<br>
-   {<br>
-      "object_id": "gxupload:f363b9e0958f4063925751d68b51f7b1"<br>
-   }<br>
+   POST Upload a binary for apifotopessoa
+   ```json
+   {
+      "object_id": "gxupload:f363b9e0958f4063925751d68b51f7b1"
+   }
+   ```
 
    3.2. **Metodo POST para fazer upload da foto**
    Exemplo: gxupload:f363b9e0958f4063925751d68b51f7b1
-   {<br>
-   "crud_foto_pessoa_post_sdt": <br>
-      {<br>
-         "pes_id": 1,<br>
-         "fp_foto": "gxupload:f363b9e0958f4063925751d68b51f7b1"<br>
-      }<br>
-   }<br>
+   ```json
+   {
+   "crud_foto_pessoa_post_sdt": 
+      {
+         "pes_id": 1,
+         "fp_foto": "gxupload:f363b9e0958f4063925751d68b51f7b1"
+      }
+   }
+   ```
 
    3.3. **Metodo GET para consultar foto da pessoa**
 
-   ```[apifotopessoa.yaml GET]``` {{baseUrl}}/?Pesid=1
+   ```[apifotopessoa.yaml GET]``` 
+   http://localhost:8080/projetogenexus/apiunidade/?pesid=1
 
    Será gerado o link para download da imagem armazenada no MinIO.
    - Exemplo:
+   ```json
    {
       "fotografialink": "http://localhost:9000/seletivo-seplag/%2FContent/foto_pessoa/fp_foto/5d445320-131d-4107-be17-d2e859fe528a_3647c70b-9f45-4aed-8d8c-c3971dedaf75.tmp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250401T041614Z&X-Amz-SignedHeaders=host&X-Amz-Expires=299&X-Amz-Credential=5VZkoaXNHJgRpgtml65k%2F20250401%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=3575f17cda30f2b6e1c74d2d664a3276766a6d69718559135f17777b2615d219"
    }   
+```
 
    - Armazenamento no MinIO
    - Geração de links temporários com expiração
    - Metadados armazenados no PostgreSQL
+
 
 ### **Entregáveis**  
 1. Código-fonte da API.  

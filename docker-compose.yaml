@@ -18,7 +18,6 @@ services:
   minio:
     image: minio/minio
     container_name: minio
-    command: server /data --console-address ":9001"
     environment:
       - MINIO_ROOT_USER=minioadmin
       - MINIO_ROOT_PASSWORD=minioadmin
@@ -28,7 +27,22 @@ services:
     networks:
       - app-network
     volumes:
-      - minio-data:/data
+      - ./minio:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://minio:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    command: server /data --console-address ":9001"
+  createbuckets:
+    image: minio/mc
+    container_name: minio-buckets
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - app-network
+    entrypoint: ["/bin/sh", "-c", "sleep 5 && mc alias set myminio http://minio:9000 minioadmin minioadmin && (mc ls myminio/seletivo-seplag || mc mb myminio/seletivo-seplag) && mc policy set public myminio/seletivo-seplag"]
   tomcat11:
     image: tomcat:11-jdk17
     container_name: seletivo-tomcat
